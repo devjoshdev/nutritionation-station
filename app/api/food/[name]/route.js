@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import mysql from "mysql2";
 const pool = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'rootroot',
-    port: 3306,
-    database: 'test',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
     connectionLimit: 10,
     queueLimit: 0,
     enableKeepAlive: true,
