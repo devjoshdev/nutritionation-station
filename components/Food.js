@@ -18,7 +18,7 @@ const expandContractStyle = {
     cursor: 'pointer'
 };
 const Food = (props) => {
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
     return (
         <div style={cardStyle}>
             <div>
