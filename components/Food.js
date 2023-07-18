@@ -17,6 +17,9 @@ const expandContractStyle = {
     float: 'right',
     cursor: 'pointer'
 };
+
+const computeCals = (gramWeight, calsPer100) => ((gramWeight * calsPer100) / (100));
+
 const Food = (props) => {
     const [expanded, setExpanded] = useState(false);
     return (
@@ -28,7 +31,7 @@ const Food = (props) => {
                 {expanded &&
                     <div>
                         <p>Servings</p>
-                        {props.servings.map(serving => <p key={serving.id}>{serving.desc}&nbsp;&nbsp;&nbsp;<FaMinus/><FaMinus/><FaMinus/>&nbsp;&nbsp;{serving.cals}</p>)}
+                        {props.servings.map((serving, idx) => <p key={idx}>{serving.modifier}&nbsp;&nbsp;&nbsp;<FaMinus/><FaMinus/><FaMinus/>&nbsp;&nbsp;{computeCals(serving.gram_weight, props.amount)}</p>)}
                         <BiCollapse style={expandContractStyle} onClick={() => {setExpanded(e => !e)}}/>
                     </div>
                 }
