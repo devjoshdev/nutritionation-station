@@ -13,7 +13,5 @@ const pool = mysql.createPool({
 }).promise();
 export async function GET(req, {params}) {
     const [results] = await pool.query("SELECT f.id, f.name, s.modifier, s.gram_weight, c.amount from food f INNER JOIN serving s ON s.food_id = f.id INNER JOIN calorie c ON c.food_id = f.id WHERE f.name LIKE ?", ["%" + params.name + "%"]);
-    const numResults = results.length;
-    console.log(numResults);
     return NextResponse.json(results);
 };
