@@ -1,5 +1,5 @@
 "use client";
-import Food from "@/components/Food.js";
+import FoodList from "@/components/FoodList";
 import { useEffect, useState } from "react";
 const servingsData = [{id: 1, desc: "1 cube", cals: 28}, {id: 2, desc: "1 block", cals: 558}];
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
       <input placeholder="Start your search here" value={searchTerm} onChange={handleInputChange} onKeyDown={handleKeyPressForSearch}/>
       <button onClick={performSearch}>Search</button>
       <div id="results">
-        <Food name="Cheese" servings={servingsData} calsPer={100}/>
+        <FoodList foods={foodData}/>
       </div>
     </div>
   );
