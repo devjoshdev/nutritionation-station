@@ -1,7 +1,17 @@
 "use client";
 import FoodList from "@/components/FoodList";
-import { useEffect, useState } from "react";
-const servingsData = [{id: 1, desc: "1 cube", cals: 28}, {id: 2, desc: "1 block", cals: 558}];
+import { useState } from "react";
+const textStyle = {
+  textAlign: "center",
+  color: "green",
+};
+
+const elemStyle = {
+  alignItems: "center",
+  justifyContent: "center",
+  display: "flex",
+  flexDirection: "column",
+};
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [foodData, setFoodData] = useState([]);
@@ -17,9 +27,9 @@ export default function Home() {
 
   console.log(foodData);
   return (
-    <div>
-      <h1>The Nutritionation Lookup Station</h1>
-      <p>Search for foods and get results</p>
+    <div style={elemStyle}>
+      <h1 style={textStyle}>The Nutritionation Lookup Station</h1>
+      <p style={textStyle}>Search for foods and get results</p>
       <input placeholder="Start your search here" value={searchTerm} onChange={handleInputChange} onKeyDown={handleKeyPressForSearch}/>
       <button onClick={performSearch}>Search</button>
       <div id="results">

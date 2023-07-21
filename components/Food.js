@@ -11,7 +11,14 @@ const cardStyle = {
     backgroundColor: '#ffffff',
     padding: '20px',
     width: '300px',
+    margin: "15px",
   };
+
+const centerStyle = {
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+}
 
 const expandContractStyle = {
     float: 'right',
@@ -24,12 +31,12 @@ const Food = (props) => {
     const [expanded, setExpanded] = useState(false);
     return (
         <div style={cardStyle}>
-            <div>
+            <div style={centerStyle}>
                 <p>{props.name}</p>
                 {!expanded && <BiExpand style={expandContractStyle} onClick={() => {setExpanded(e => !e)}}/>}
             </div>
                 {expanded &&
-                    <div>
+                    <div style={centerStyle}>
                         <p>Servings</p>
                         {props.servings.map((serving, idx) => <p key={idx}>{serving.modifier}&nbsp;&nbsp;&nbsp;<FaMinus/><FaMinus/><FaMinus/>&nbsp;&nbsp;{computeCals(serving.gram_weight, props.amount)}</p>)}
                         <BiCollapse style={expandContractStyle} onClick={() => {setExpanded(e => !e)}}/>

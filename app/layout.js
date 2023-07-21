@@ -8,7 +8,7 @@ export const metadata = {
 }
 
 const globalStyle = {
-  backgroundColor: "#ECE9D6",
+  backgroundColor: "#D9D6BF",
 };
 
 export default function RootLayout({ children }) {
