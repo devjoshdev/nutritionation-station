@@ -29,7 +29,7 @@ const FoodList = ({foods}) => {
     const size = foods.length;
     const totalPages = (size / 10 === parseInt(size / 10)) ? size / 10 : parseInt(size / 10) + 1;
     const [currentPage, setCurrentPage] = useState(1);
-    const start = currentPage * 10 - 1;
+    const start = (currentPage - 1) * 10;
     const dataToDisplay = foods.slice(start, start+10);
     const handleLeftArrowClick = () => setCurrentPage(curr => curr - 1);
     const handleRightArrowClick = () => setCurrentPage(curr => curr + 1);
