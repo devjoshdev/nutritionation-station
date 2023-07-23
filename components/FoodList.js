@@ -38,11 +38,11 @@ const FoodList = ({foods}) => {
         <div style={cardStyle}>
             <p style={textStyle}>Page {currentPage} of {totalPages}</p>
             <div style={iconStyle}>
-            {currentPage > 1 && <BsArrowLeftCircleFill style={iconStyle} className="left-arrow" onClick={handleLeftArrowClick}/>}<RxDividerVertical style={iconStyle}/>{currentPage < totalPages && <BsArrowRightCircleFill style={iconStyle} className="right-arrow" onClick={handleRightArrowClick}/>}
+            {currentPage > 1 && <BsArrowLeftCircleFill style={{...iconStyle, cursor: "pointer"}} className="left-arrow" onClick={handleLeftArrowClick}/>}<RxDividerVertical style={iconStyle}/>{currentPage < totalPages && <BsArrowRightCircleFill style={{...iconStyle, cursor: "pointer"}} className="right-arrow" onClick={handleRightArrowClick}/>}
             </div>
             {dataToDisplay.map(food => <Food key={food.id} name={food.name} servings={food.servings} amount={food.amount}/>)}
             <div style={iconStyle}>
-            {currentPage > 1 && <BsArrowLeftCircleFill style={iconStyle} className="left-arrow" onClick={handleLeftArrowClick}/>}<RxDividerVertical style={iconStyle}/>{currentPage < totalPages && <BsArrowRightCircleFill style={iconStyle} className="right-arrow" onClick={handleRightArrowClick}/>}
+            {currentPage > 1 && <BsArrowLeftCircleFill style={{...iconStyle, cursor: "pointer"}} className="left-arrow" onClick={handleLeftArrowClick}/>}<RxDividerVertical style={iconStyle}/>{currentPage < totalPages && <BsArrowRightCircleFill style={{...iconStyle, cursor: "pointer"}} className="right-arrow" onClick={handleRightArrowClick}/>}
             </div>
             <p style={textStyle}>Page {currentPage} of {totalPages}</p>
         </div>
