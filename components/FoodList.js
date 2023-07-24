@@ -77,15 +77,15 @@ const FoodList = ({searchTerm}) => {
     return (
         <div style={cardStyle}>
             {errorMessage !== "" ? <h1 style={{color: "red",}}>{errorMessage}</h1> : ""}
-            <p style={textStyle}>Page {currentPage} of {totalPages}</p>
+            {foodData.length === 0 ? <p style={textStyle}>No results to show</p> : <p style={textStyle}>Page {currentPage} of {totalPages}</p>}
             <div style={iconStyle}>
-            {currentPage > 1 && <BsArrowLeftCircleFill style={{...iconStyle, cursor: "pointer"}} className="left-arrow" onClick={handleLeftArrowClick}/>}<RxDividerVertical style={iconStyle}/>{currentPage < totalPages && <BsArrowRightCircleFill style={{...iconStyle, cursor: "pointer"}} className="right-arrow" onClick={handleRightArrowClick}/>}
+            {currentPage > 1 && <BsArrowLeftCircleFill style={{...iconStyle, cursor: "pointer"}} className="left-arrow" onClick={handleLeftArrowClick}/>}{foodData.length > 0 && <RxDividerVertical style={iconStyle}/>}{currentPage < totalPages && <BsArrowRightCircleFill style={{...iconStyle, cursor: "pointer"}} className="right-arrow" onClick={handleRightArrowClick}/>}
             </div>
             {dataToDisplay.map(food => <Food key={food.id} name={food.name} servings={food.servings} amount={food.amount}/>)}
             <div style={iconStyle}>
-            {currentPage > 1 && <BsArrowLeftCircleFill style={{...iconStyle, cursor: "pointer"}} className="left-arrow" onClick={handleLeftArrowClick}/>}<RxDividerVertical style={iconStyle}/>{currentPage < totalPages && <BsArrowRightCircleFill style={{...iconStyle, cursor: "pointer"}} className="right-arrow" onClick={handleRightArrowClick}/>}
+            {currentPage > 1 && <BsArrowLeftCircleFill style={{...iconStyle, cursor: "pointer"}} className="left-arrow" onClick={handleLeftArrowClick}/>}{foodData.length > 0 && <RxDividerVertical style={iconStyle}/>}{currentPage < totalPages && <BsArrowRightCircleFill style={{...iconStyle, cursor: "pointer"}} className="right-arrow" onClick={handleRightArrowClick}/>}
             </div>
-            <p style={textStyle}>Page {currentPage} of {totalPages}</p>
+            {foodData.length === 0 ? "" : <p style={textStyle}>Page {currentPage} of {totalPages}</p>}
         </div>
     );
 };
