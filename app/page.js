@@ -14,44 +14,19 @@ const elemStyle = {
 };
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [foodData, setFoodData] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-  const handleInputChange = (e) => setSearchTerm(e.target.value);
-  const handleKeyPressForSearch = (e) => {if (e.key === "Enter") performSearch();}
-  const performSearch = async () => {
-    console.log("search term is", searchTerm, `api/food/${searchTerm}`);
-    if (searchTerm.length < 3) return;
-    try {
-      const results = await fetch(`api/food/${searchTerm}`, {cache: 'no-store',});
-      if (!results.ok) {
-        setErrorMessage("Something went wrong! Try again when this message disappears");
-        setTimeout(() => {
-          setErrorMessage("");
-        }, 5000);
-      }
-      const data = await results.json();
-      setFoodData(data);
-    }
-    catch (err) {
-      setFoodData([]);
-      setErrorMessage("There was a network error");
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 5000);
-    }
+  const [termToSet, setTermToSet] = useState("");
+  const handleInputChange = (e) => setTermToSet(e.target.value);
+  const handleEventForSearch = (e) => {if (e.key === "Enter") setSearchTerm(termToSet);}
+  const handleClickSearch = (e) => {setSearchTerm(termToSet);}
 
-  };
-
-  console.log(foodData);
   return (
     <div style={elemStyle}>
-      {errorMessage !== "" ? <h1 style={{color: "red",}}>{errorMessage}</h1> : ""}
       <h1 style={textStyle}>The Nutritionation Lookup Station</h1>
       <p style={textStyle}>Search for foods and get results</p>
-      <input placeholder="Start your search here" value={searchTerm} onChange={handleInputChange} onKeyDown={handleKeyPressForSearch}/>
-      <button onClick={performSearch}>Search</button>
+      <input placeholder="Start your search here" value={termToSet} onChange={handleInputChange} onKeyDown={handleEventForSearch}/>
+      <button onClick={handleClickSearch}>Search</button>
       <div id="results">
-        <FoodList foods={foodData}/>
+        <FoodList searchTerm={searchTerm} />
       </div>
     </div>
   );
